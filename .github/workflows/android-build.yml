@@ -13,13 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ✅ Node 20 ONLY (Capacitor compatible)
-      - name: Set up Node.js
+      # ✅ REQUIRED by Capacitor v6
+      - name: Set up Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      # ✅ Java MUST come before cap sync
+      # ✅ REQUIRED by Android
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
@@ -29,10 +29,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build web assets
+      - name: Build web assets (if any)
         run: npm run build || echo "No build step"
 
-      # ✅ Now Java + Node are ready
+      # ✅ Needs Node 22 + Java 17
       - name: Sync Capacitor
         run: npx cap sync android
 
