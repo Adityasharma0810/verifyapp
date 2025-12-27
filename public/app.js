@@ -1,4 +1,9 @@
 // 🔐 Supabase config (anon key is SAFE for read-only)
+window.onerror = function (msg, url, line, col, error) {
+  alert("JS Error: " + msg);
+};
+
+
 const SUPABASE_URL =
   "https://iglkrwpruybqmdtqijet.supabase.co/rest/v1/shipments";
 
