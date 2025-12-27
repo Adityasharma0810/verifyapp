@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.certify.verifyapp"
+    namespace "certify.com"
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.certify.verifyapp"
+        applicationId "certify.com"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
@@ -21,12 +21,16 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile(
+                'proguard-android.txt'
+            ), 'proguard-rules.pro'
         }
-        debug {
-            minifyEnabled false
-        }
+    }
+
+    // 🔥 THIS FIXES YOUR ERROR
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -38,9 +42,11 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
     implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+
     implementation project(':capacitor-android')
     implementation project(':capacitor-cordova-android-plugins')
 
@@ -56,6 +62,6 @@ try {
     if (servicesJSON.exists()) {
         apply plugin: 'com.google.gms.google-services'
     }
-} catch (Exception e) {
-    logger.info("google-services.json not found, skipping Google Services plugin")
+} catch (Exception ignored) {
+    logger.lifecycle("google-services.json not found")
 }
