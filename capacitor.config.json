@@ -1,5 +1,6 @@
 {
-  "appId": "Certify.com",
-  "appName": "Certify",
-  "webDir": "www"
+  "appId": "com.verify.app",
+  "appName": "VerifyApp",
+  "webDir": "public",
+  "bundledWebRuntime": false
 }
