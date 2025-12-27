@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "certify.com"
+    namespace "com.certify"
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "certify.com"
+        applicationId "com.certify"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
