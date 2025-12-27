@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shipment Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Shipment Verification</h1>
+
+    <input
+      id="shipmentId"
+      type="text"
+      placeholder="Enter Shipment ID"
+    />
+
+    <button onclick="verifyShipment()">Verify Shipment</button>
+
+    <div class="qr-section">
+      <button class="qr-btn" onclick="startQR()">📷 Scan QR</button>
+      <input type="file" accept="image/*" onchange="scanQRImage(this)" />
+    </div>
+
+    <div id="qr-reader"></div>
+
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <!-- QR library (CDN, no install needed) -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="app.js"></script>
+</body>
+</html>

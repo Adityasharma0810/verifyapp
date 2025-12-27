@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Certify</string>
+    <string name="title_activity_main">Certify</string>
+    <string name="package_name">Certify.com</string>
+    <string name="custom_url_scheme">Certify.com</string>
+</resources>
