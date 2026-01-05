@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Shipment Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Certificate</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="container">
-    <h1>Shipment Verification</h1>
-
-    <input
-      id="shipmentId"
-      type="text"
-      placeholder="Enter Shipment ID"
-    />
-
-    <button onclick="verifyShipment()">Verify Shipment</button>
-
-    <div class="qr-section">
-      <button class="qr-btn" onclick="startQR()">📷 Scan QR</button>
-      <input type="file" accept="image/*" onchange="scanQRImage(this)" />
+    <div class="header">
+      <h1>Verify Certificate</h1>
+      <p>Enter a shipment ID or upload a QR code</p>
     </div>
 
-    <div id="qr-reader"></div>
+    <div class="card">
+      <div class="card-title">Certificate Verification</div>
+      <div class="card-desc">Check if a certificate is valid and authentic</div>
+      
+      <input id="shipmentId" type="text" placeholder="Enter Shipment ID" />
+      
+      <div class="actions">
+        <button id="verifyBtn" onclick="verifyShipment()">Verify</button>
+        <button class="outline" onclick="startQR()">📷 Scan</button>
+        <button class="outline" onclick="document.getElementById('fileInput').click()">📁 Upload</button>
+      </div>
+      
+      <input type="file" id="fileInput" hidden accept="image/*" onchange="scanQRImage(this)" />
+      <div id="qr-reader" style="display:none"></div>
+    </div>
 
     <div id="result" class="result hidden"></div>
   </div>
 
-  <!-- QR library (CDN, no install needed) -->
   <script src="https://unpkg.com/html5-qrcode"></script>
   <script src="app.js"></script>
 </body>
